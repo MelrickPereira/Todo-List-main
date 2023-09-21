@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { useState, useEffect} from 'react'
 import Todo from '../pages/components/Todo'
 import {db} from '../pages/firebase'
-import {query , collection , onSnapshot, QuerySnapshot, updateDoc,doc, addDoc,deleteDoc} from 'firebase/firestore'
+import {query , collection , onSnapshot, QuerySnapshot, updateDoc,doc,getDoc, addDoc,deleteDoc} from 'firebase/firestore'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -34,19 +34,19 @@ export default function Home() {
     setInput('')
   };
 
-  // Read Todo
-  useEffect(()=>{
-    const q = query(collection(db,'todos'));
-    const unsubscribe = onSnapshot(q,(QuerySnapshot)=>{
-       let todosArr = [];
-      QuerySnapshot.forEach((doc)=>{
-        todosArr.push({...doc.data(),id: doc.id});
-      });
-      setTodos(todosArr);
-    });
-    return ()=>unsubscribe();
+  // ------------------Read Todo---------------
+  // useEffect(()=>{
+  //   const q = query(collection(db,'todos'));
+  //   const unsubscribe = onSnapshot(q,(QuerySnapshot)=>{
+  //      let todosArr:[];
+  //     QuerySnapshot.forEach((doc)=>{
+  //       todosArr.push(doc.data);
+  //     });
+  //     setTodos(todosArr);
+  //   });
+  //   return ()=>unsubscribe();
 
-  },[]);
+  // },[]);
 
 
   // Update Todo
