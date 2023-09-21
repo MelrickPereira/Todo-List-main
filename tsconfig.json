@@ -16,6 +16,8 @@
     "noImplicitAny":false,
     "noImplicitReturns": false,
     "strictNullChecks":false,
+    
+
     "paths": {
       "@/*": ["./*"]
     }
